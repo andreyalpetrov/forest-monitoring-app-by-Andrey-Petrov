@@ -1,6 +1,24 @@
 # forest-monitoring-app-by-Andrey-Petrov
 Back-end приложение на Python, отвечающее за хранения и обработку данных мониторинга лесных пожаров
 
+**Основные компоненты:**
+- Flask приложение с 3-мя REST сервисами (создание алертов, получение за период, скачивание файлов)
+- PostgreSQL БД с двумя таблицами (fire_alerts и alert_images)
+- Docker Compose для оркестрации обоих контейнеров
+- Persistent volumes для сохранения данных и изображений
+   
+**Структура приложения**
+forest-fire-api/
+├── app.py                 # Основное Flask приложение
+├── models.py              # SQLAlchemy модели БД
+├── config.py              # Конфигурация приложения
+├── requirements.txt       # Python зависимости
+├── Dockerfile             # Docker образ для Flask приложения
+├── docker-compose.yml     # Оркестрация контейнеров
+├── .env                   # Переменные окружения
+├── uploads/               # Volume для изображений (смонтируется в контейнер)
+└── init_db.sql            # Инициализация БД PostgreSQL
+   
 **Примеры использования API**
 1. Создание алерта с изображениями
 curl -X POST http://localhost:5000/api/alerts \
